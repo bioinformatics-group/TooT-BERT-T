@@ -1,6 +1,8 @@
 # TooT-BERT-T
 
-TooT-BERT-T is a tool that predicts transmembrane transporter proteins using ProtBERT-BFD and logistic regression. This tool takes protein sequences in fasta format as input and outputs the predicted labels for sequence ID - transporter, nontransporter. The method used in this tool is described in the paper "TooT-BERT-T: A BERT Approach on Discriminating Transport Proteins from Non-transport Proteins" by H. Ghazikhani and G. Butler, published in the proceedings of the 16th International Conference on Practical Applications of Computational Biology and Bioinformatics (PACBB 2022).
+TooT-BERT-T is a tool that predicts transmembrane transporter proteins using ProtBERT-BFD and logistic regression. This tool takes protein sequences in fasta format as input and outputs the predicted labels for sequence ID - transporter, nontransporter.
+
+The method used in this tool is described in the paper "TooT-BERT-T: A BERT Approach on Discriminating Transport Proteins from Non-transport Proteins" by H. Ghazikhani and G. Butler, published in the proceedings of the 16th International Conference on Practical Applications of Computational Biology and Bioinformatics (PACBB 2022).
 
 ## Installation
 
