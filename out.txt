@@ -1,0 +1,10 @@
+Sequence:P51788-transporter	Prediction:transporter
+Sequence:Q98980-nontransporter	Prediction:nontransporter
+Sequence:Q8NGY6-nontransporter	Prediction:nontransporter
+Sequence:P35383-nontransporter	Prediction:nontransporter
+Sequence:O93956-nontransporter	Prediction:nontransporter
+Sequence:P0ADC3-transporter	Prediction:transporter
+Sequence:Q7VCF7-nontransporter	Prediction:nontransporter
+Sequence:P21439-transporter	Prediction:transporter
+Sequence:P46970-transporter	Prediction:transporter
+Sequence:Q9C660-nontransporter	Prediction:nontransporter
