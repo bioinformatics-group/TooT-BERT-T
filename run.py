@@ -32,14 +32,15 @@ with open(args.input_file, 'r') as f:
     # We create a list of sequences.
     sequences_ids = [(str(record.seq), str(record.id)) for record in records]
 
-# We load the logistic regression model.
-lr = joblib.load('lr_model.pkl')
-
 # We load the BERT model and the tokenizer.
 print('Loading BERT model and tokenizer...')
 tokenizer = BertTokenizer.from_pretrained('rostlab/prot_bert_bfd', do_lower_case=False)
 model = BertModel.from_pretrained('ghazikhanihamed/TransporterBERT')
 model.to(device)
+
+# We load the logistic regression model.
+print('Loading logistic regression model...')
+lr = joblib.load('lr_model.pkl')
 
 # For each sequence, we tokenize it and then we pass it through the BERT model.
 predictions = []
