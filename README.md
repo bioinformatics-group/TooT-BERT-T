@@ -4,7 +4,7 @@ TooT-BERT-T is a tool that predicts transmembrane transporter proteins using Pro
 
 ## Installation
 
-The list of required python packages is included in the file `**requirements.txt**`. To install these packages, run the following command:
+The list of required python packages is included in the file **requirements.txt**. To install these packages, run the following command:
 ```
 pip install -r requirements.txt
 ```
@@ -18,6 +18,6 @@ For example:
 ```
 python run.py test.fasta out.txt
 ```
-where `**test.fasta**` is the input file containing protein sequences in fasta format and `**out.txt**` is the output file where the predicted labels will be written.
+where **test.fasta** is the input file containing protein sequences in fasta format and **out.txt** is the output file where the predicted labels will be written.
 
 Note: This tool runs faster on a GPU.
