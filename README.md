@@ -6,9 +6,9 @@ The method used in this tool is described in the paper "TooT-BERT-T: A BERT Appr
 
 ## Installation
 
-The list of required python packages is included in the file "**requirement.txt**". To install these packages, run the following command:
+The list of required python packages is included in the file "**requirements.txt**". To install these packages, run the following command:
 ```
-pip install -r requirement.txt
+pip install -r requirements.txt
 ```
 ## Usage
 
