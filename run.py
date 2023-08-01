@@ -50,41 +50,38 @@ print('Loading logistic regression model...')
 lr = joblib.load(args.lr_model)
 
 # For each sequence, we tokenize it and then we pass it through the BERT model.
-predictions = []
 print("Sequence ID\t\tPredicted label")
 print("------------\t\t---------------")
-for sequence, id in sequences_ids:
-    # Make space between each amino acid.
-    sequence = ' '.join(sequence)
-    # Replace unknown amino acids with X.
-    sequence = sequence.replace('U', 'X')
-    sequence = sequence.replace('O', 'X')
-    sequence = sequence.replace('B', 'X')
-    sequence = sequence.replace('Z', 'X')
-
-    tokenized_sequence = tokenizer.encode_plus(sequence, add_special_tokens=True, max_length=args.max_seq_len, truncation=True)
-    input_ids = torch.tensor([tokenized_sequence['input_ids']]).to(device)
-    attention_mask = torch.tensor([tokenized_sequence['attention_mask']]).to(device)
-
-    with torch.no_grad():
-        last_hidden_states = model(input_ids, attention_mask=attention_mask)[0]
-
-    embedding = last_hidden_states[0].cpu().numpy()
-
-    seq_len = (attention_mask[0] == 1).sum()
-    seq_embedding = embedding[1:seq_len-1]
-    mean_pool = np.mean(seq_embedding, axis=0)
-
-    # We predict the label.
-    prediction = lr.predict([mean_pool])
-    predictions.append("Sequence:{}\tPrediction:{}".format(id, prediction[0]))
-
-    # We print the id and the prediction.
-    print("{}\t{}".format(id, prediction[0]))
-
-# We write the output to the output file.
 with open(args.output_file, 'w') as f:
-    for prediction in predictions:
-        f.write(prediction + '\n')
+    for sequence, id in sequences_ids:
+        # Make space between each amino acid.
+        sequence = ' '.join(sequence)
+        # Replace unknown amino acids with X.
+        sequence = sequence.replace('U', 'X')
+        sequence = sequence.replace('O', 'X')
+        sequence = sequence.replace('B', 'X')
+        sequence = sequence.replace('Z', 'X')
+
+        tokenized_sequence = tokenizer.encode_plus(sequence, add_special_tokens=True, max_length=args.max_seq_len, truncation=True)
+        input_ids = torch.tensor([tokenized_sequence['input_ids']]).to(device)
+        attention_mask = torch.tensor([tokenized_sequence['attention_mask']]).to(device)
+
+        with torch.no_grad():
+            last_hidden_states = model(input_ids, attention_mask=attention_mask)[0]
+
+        embedding = last_hidden_states[0].cpu().numpy()
+
+        seq_len = (attention_mask[0] == 1).sum()
+        seq_embedding = embedding[1:seq_len-1]
+        mean_pool = np.mean(seq_embedding, axis=0)
+
+        # We predict the label.
+        prediction = lr.predict([mean_pool])
+        # We write the output to the output file.
+        f.write("Sequence:{}\tPrediction:{}".format(id, prediction[0]) + '\n')
+        f.flush()
+
+        # We print the id and the prediction.
+        print("{}\t{}".format(id, prediction[0]))
 
 print('Finished.')
